@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started with FitAI</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <style>
+    :root {
+      --primary-color: #6a11cb;
+      --secondary-color: #2575fc;
+    }
+
+    body {
+      background: url('img.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .logo h1 {
+      color: white;
+      margin: 0;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    /* Navigation Hover Effect */
+    .nav-links a:hover {
+      color: pink !important; /* Force pink color on hover */
+    }
+
+    .upload-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .upload-section h2 {
+      color: black;
+      margin-bottom: 0.5rem;
+    }
+
+    .upload-section p {
+      color: black;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .upload-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .upload-box-custom {
+      width: 250px;
+      height: 320px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .upload-box-custom img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .upload-text {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.8);
+      color: black;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 18px;
+      z-index: 2;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .simple-button {
+      margin-top: 3rem;
+      background: hotpink;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease;
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .simple-button:hover {
+      background: deeppink;
+    }
+
+    /* Loading Spinner Style */
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      position: absolute;
+    }
+
+    /* Animation for the Spinner */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo"><h1>FitAI</h1></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="get-started.html">Get Started</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="upload-section">
+    <h2>Start Measuring in 3 Easy Uploads</h2>
+    <p><b>Click below and upload images.</b></p>
+
+    <div class="upload-container">
+
+      <!-- Front View -->
+      <label class="upload-box-custom" data-tilt for="front-upload">
+        <img id="front-preview" src="img_front.png" alt="Front View" />
+        <div class="upload-text">Front View</div>
+        <input type="file" id="front-upload" accept="image/*" onchange="previewImage(event, 'front-preview')">
+      </label>
+
+      <!-- Side View -->
+      <label class="upload-box-custom" data-tilt for="side-upload">
+        <img id="side-preview" src="img_side.png" alt="Side View" />
+        <div class="upload-text">Side View</div>
+        <input type="file" id="side-upload" accept="image/*" onchange="previewImage(event, 'side-preview')">
+      </label>
+
+      <!-- Back View -->
+      <label class="upload-box-custom" data-tilt for="back-upload">
+        <img id="back-preview" src="img_back.png" alt="Back View" />
+        <div class="upload-text">Back View</div>
+        <input type="file" id="back-upload" accept="image/*" onchange="previewImage(event, 'back-preview')">
+      </label>
+
+    </div>
+
+    <button class="simple-button" onclick="startLoading()">Get Measurements</button>
+  </section>
+
+  <footer>
+    <p style="color:#fff; text-shadow:1px 1px 2px #000;">&copy; 2025 FitAI. AI tailor in your pocket.</p>
+  </footer>
+
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".upload-box-custom"), {
+      max: 20,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.4
+    });
+
+    function previewImage(event, previewId) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.getElementById(previewId);
+        img.src = e.target.result;
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function startLoading() {
+      const button = document.querySelector('.simple-button');
+      const spinner = document.createElement('div');
+      spinner.classList.add('spinner');
+      button.innerHTML = '';  // Remove existing text
+      button.appendChild(spinner);  // Add the spinner inside the button
+
+      // Simulate loading process (e.g., 3 seconds)
+      setTimeout(() => {
+        button.innerHTML = 'Get Measurements';  // Reset the button text
+        alert('Processing complete!');
+      }, 3000);  // 3 seconds for demo purposes
+    }
+  </script>
+</body>
+</html>

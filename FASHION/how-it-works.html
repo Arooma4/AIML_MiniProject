@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How FitAI Works</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <style>
+    .steps-section {
+      padding: 4rem 2rem;
+      background: var(--light-bg);
+      animation: fadeInUp 1s ease;
+    }
+
+    .step {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2rem;
+      margin: 2rem auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 700px;
+      text-align: left;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+    }
+
+    .step h3 {
+      color: var(--primary-color);
+      font-size: 1.75rem;
+    }
+
+    .step-number {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--secondary-color);
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Navigation Styles */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      background-color: #333; /* Dark background for contrast */
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      padding: 0.5rem; /* Add some padding for better hover effect */
+    }
+
+    /* Ensure hover works with specific selector */
+    .nav-links a:hover {
+      color: pink !important; /* Force pink color with !important */
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo"><h1>FitAI</h1></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="get-started.html">Get Started</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="steps-section">
+    <h1 style="text-align:center;">How It Works</h1>
+    <div class="step" data-tilt>
+      <span class="step-number">Step 1:</span>
+      <h3>Upload Your Profile Images</h3>
+      <p>Front, side, and back images are required for accurate measurements. You can use your phone camera directly.</p>
+    </div>
+    <div class="step" data-tilt>
+      <span class="step-number">Step 2:</span>
+      <h3>AI Processing Begins</h3>
+      <p>Our smart algorithms scan the images for key body points and estimate dimensions within seconds.</p>
+    </div>
+    <div class="step" data-tilt>
+      <span class="step-number">Step 3:</span>
+      <h3>Instant Measurement Results</h3>
+      <p>You'll receive a complete body measurement chart and clothing size suggestions in real-time.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 FitAI. Designed for your perfect fit.</p>
+  </footer>
+
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".step"), {
+      max: 15,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.3,
+    });
+  </script>
+</body>
+</html>
