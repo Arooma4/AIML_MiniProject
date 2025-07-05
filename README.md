@@ -49,7 +49,7 @@ FitAI leverages computer vision and AI to detect body keypoints from images and 
 
 **Installation**  
 1. **Clone the repository:**  
-   `git clone https://github.com/<username>/FitAI.git`  
+   `git clone https://github.com/Arooma4/FitAI.git`  
    `cd FitAI`  
 2. **Create a virtual environment and activate it:**  
    `python3 -m venv venv`  
@@ -67,20 +67,24 @@ FitAI leverages computer vision and AI to detect body keypoints from images and 
 4. View extracted measurements and download 3D model snapshots.
 
 **Project Structure**  
+Project Structure
+─────────────────
+
 FitAI/
 ├── backend/
-│ ├── app.py # Flask application
-│ ├── models/ # Pose estimation and utilities
-│ └── utils/ # Measurement and scaling logic
+│   ├── app.py               # Flask application
+│   ├── models/              # Pose estimation and utilities
+│   └── utils/               # Measurement and scaling logic
 ├── frontend/
-│ ├── index.html
-│ ├── static/
-│ │ ├── css/
-│ │ └── js/
+│   ├── index.html
+│   └── static/
+│       ├── css/
+│       └── js/
 ├── makehuman/
-│ └── templates/ # .mhm file generation scripts
+│   └── templates/           # .mhm file generation scripts
 ├── requirements.txt
 └── README.md
+
 
 **Contributing**  
 Contributions are welcome! Please:  
